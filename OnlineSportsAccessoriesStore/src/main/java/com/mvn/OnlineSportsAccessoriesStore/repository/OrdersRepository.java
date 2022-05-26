@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.mvn.OnlineSportsAccessoriesStore.entity.Orders;
 
 @Repository
-public interface OrdersRepository extends JpaRepository<Orders, Integer>,CustomOrderRepository{
+public interface OrdersRepository extends JpaRepository<Orders,Integer>,CustomOrderRepository{
 	
 
 }

@@ -96,7 +96,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> getProductById(int id) {
 		// TODO Auto-generated method stub
-		List<Product> ps=ProdRep.findAll();
+		List<Product> ps=productRepository.findAll();
 		return ps;
 	}
 
@@ -105,7 +105,7 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> getProductDetails(String prodName)
 	{
 
-		List<Product> name =  ProdRep.findAll();
+		List<Product> name =  productRepository.findAll();
 
 		
 		
@@ -125,6 +125,12 @@ public class ProductServiceImpl implements ProductService{
 	public boolean updateDetails(String name, int cost) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public List<Product> getAllProduct() {
+		List<Product> lst = productRepository.findAll();
+		return lst;
 	}
 	
 	

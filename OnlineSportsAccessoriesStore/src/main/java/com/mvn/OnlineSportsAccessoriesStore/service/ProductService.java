@@ -31,6 +31,7 @@ public boolean updateDetails(String name,int cost);
 	
 	public List<Product> getProductById(int id);
     public List<Product> getProductDetails(String prodName);
+    public List<Product> getAllProduct();
 
 
 }

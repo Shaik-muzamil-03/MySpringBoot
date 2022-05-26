@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mvn.OnlineSportsAccessoriesStore.entity.Orders;
 
-public class CustomOrderRpositoryImpl implements CustomOrderRepository{
+public class CustomOrderRepositoryImpl implements CustomOrderRepository{
 	
 	@Autowired
 	EntityManager jpa;
@@ -19,23 +19,25 @@ public class CustomOrderRpositoryImpl implements CustomOrderRepository{
 	@Override
 	public List<Orders>  getPreviousOrders() {
 		Session spring = jpa.unwrap(Session.class);
-		String query = "from Orders o where o.status =:enteredName";
+		String query = "from Orders  where status =:enteredName";
 		
 		Query<Orders> q = spring.createQuery(query);
 		String str = "previous";
-		q.setParameter("enterdName",str);
+		q.setParameter("enteredName",str);
 		List<Orders> orders = q.getResultList();
+		System.out.println(orders);
 		return orders;
 	}
 
 	@Override
 	public List<Orders> getCurrentOrders() {
 		Session spring = jpa.unwrap(Session.class);
-		String query = "from Orders o where o.status =:enteredName";
+		String query = "from Orders  where status =:enteredName";
 		Query<Orders> q = spring.createQuery(query);
 		String str = "current";
-		q.setParameter("enterdName",str);
+		q.setParameter("enteredName",str);
 		List<Orders> ordersLS = q.getResultList();
+		System.out.println(ordersLS);
 		return ordersLS;
 	}
 	
