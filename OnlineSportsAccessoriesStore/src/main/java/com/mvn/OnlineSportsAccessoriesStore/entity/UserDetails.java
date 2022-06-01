@@ -1,5 +1,7 @@
 package com.mvn.OnlineSportsAccessoriesStore.entity;
 
+import java.util.Objects;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
@@ -50,6 +52,28 @@ public class UserDetails {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(Name, city, email, houseAddress, mobileNumber);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserDetails other = (UserDetails) obj;
+		return Objects.equals(Name, other.Name) && Objects.equals(city, other.city)
+				&& Objects.equals(email, other.email) && Objects.equals(houseAddress, other.houseAddress)
+				&& mobileNumber == other.mobileNumber;
+	}
+	@Override
+	public String toString() {
+		return "UserDetails [Name=" + Name + ", houseAddress=" + houseAddress + ", city=" + city + ", mobileNumber="
+				+ mobileNumber + ", email=" + email + "]";
 	}
 	
 }

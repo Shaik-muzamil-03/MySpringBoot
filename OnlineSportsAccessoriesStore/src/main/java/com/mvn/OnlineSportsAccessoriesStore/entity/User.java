@@ -1,5 +1,6 @@
 package com.mvn.OnlineSportsAccessoriesStore.entity;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -10,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,6 +23,7 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private int userId;
 	private String Username;
 	private String Password;
@@ -32,8 +36,8 @@ public class User {
 	@Column(nullable = true)
 	private UserDetails userDeatils;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Orders> orders;
+	
+	
 	
 	
 	
@@ -54,8 +58,11 @@ public class User {
 
 
 
+
+
+
 	public User(int userId, String username, String password, String role, long debitCardNo, int totalPurchase,
-			UserDetails userDeatils, Set<Orders> orders) {
+			UserDetails userDeatils) {
 		super();
 		this.userId = userId;
 		Username = username;
@@ -64,8 +71,10 @@ public class User {
 		DebitCardNo = debitCardNo;
 		TotalPurchase = totalPurchase;
 		this.userDeatils = userDeatils;
-		this.orders = orders;
 	}
+
+
+
 
 
 
@@ -85,9 +94,15 @@ public class User {
 
 
 
+
+
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
+
+
 
 
 
@@ -107,9 +122,15 @@ public class User {
 
 
 
+
+
+
 	public void setUsername(String username) {
 		Username = username;
 	}
+
+
+
 
 
 
@@ -129,9 +150,15 @@ public class User {
 
 
 
+
+
+
 	public void setPassword(String password) {
 		Password = password;
 	}
+
+
+
 
 
 
@@ -151,9 +178,15 @@ public class User {
 
 
 
+
+
+
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+
+
 
 
 
@@ -173,9 +206,15 @@ public class User {
 
 
 
+
+
+
 	public void setDebitCardNo(long debitCardNo) {
 		DebitCardNo = debitCardNo;
 	}
+
+
+
 
 
 
@@ -195,9 +234,15 @@ public class User {
 
 
 
+
+
+
 	public void setTotalPurchase(int totalPurchase) {
 		TotalPurchase = totalPurchase;
 	}
+
+
+
 
 
 
@@ -217,6 +262,9 @@ public class User {
 
 
 
+
+
+
 	public void setUserDeatils(UserDetails userDeatils) {
 		this.userDeatils = userDeatils;
 	}
@@ -228,32 +276,16 @@ public class User {
 
 
 
-	public Set<Orders> getOrders() {
-		return orders;
-	}
-
-
-
-
-
-
-
-
-	public void setOrders(Set<Orders> orders) {
-		this.orders = orders;
-	}
-
-
-
-
-
 
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(DebitCardNo, Password, TotalPurchase, Username, orders, role, userDeatils, userId);
+		return Objects.hash(DebitCardNo, Password, TotalPurchase, Username, role, userDeatils, userId);
 	}
+
+
+
 
 
 
@@ -273,9 +305,12 @@ public class User {
 		User other = (User) obj;
 		return DebitCardNo == other.DebitCardNo && Objects.equals(Password, other.Password)
 				&& TotalPurchase == other.TotalPurchase && Objects.equals(Username, other.Username)
-				&& Objects.equals(orders, other.orders) && Objects.equals(role, other.role)
-				&& Objects.equals(userDeatils, other.userDeatils) && userId == other.userId;
+				&& Objects.equals(role, other.role) && Objects.equals(userDeatils, other.userDeatils)
+				&& userId == other.userId;
 	}
+
+
+
 
 
 
@@ -288,9 +323,19 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", Username=" + Username + ", Password=" + Password + ", role=" + role
 				+ ", DebitCardNo=" + DebitCardNo + ", TotalPurchase=" + TotalPurchase + ", userDeatils=" + userDeatils
-				+ ", orders=" + orders + "]";
+				+ "]";
 	}
+
+
+
+
+
+
+
+
 	
+
+
 
 	
 }
